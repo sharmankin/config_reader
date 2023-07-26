@@ -2,6 +2,7 @@ import os
 import platform
 import re
 from pathlib import Path
+import stat
 
 from dotenv import load_dotenv, find_dotenv, set_key
 
@@ -45,6 +46,10 @@ def get_config(node_path: str, *, conf_string_delimiter: str = None, **kwargs):
     )
 
     config_file = project_root.home() / config_file_relative_path
+
+    assert (
+               not os.stat(config_file).st_mode & (stat.S_IWOTH | stat.S_IWGRP | stat.S_IRGRP | stat.S_IROTH)
+           ) or platform.system() == 'Windows', 'Check config file permissions'
 
     assert config_file.exists(), f'No config file {config_file.absolute().as_posix()}'
 
