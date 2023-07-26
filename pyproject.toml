@@ -15,19 +15,13 @@ dependencies = [
     "python-dotenv"
 ]
 
+
 [tool.setuptools]
 packages = [
     "config_reader",
     "project_config"
 ]
 
-[tool.setuptools.package-data]
-    project_config = [
-         "*.txt"
-    ]
-    config_reader = [
-        "*.dst"
-    ]
 
 [build-system]
 requires = [
@@ -38,6 +32,9 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 #[tool.setuptools.package-data]
-#vehicle_photo_service = [
+#package_name = [
 #    "*.h5", "*.txt"
 #]
+
+#[project.scripts]
+#    my-script = "my_package.module:function"
