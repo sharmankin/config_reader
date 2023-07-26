@@ -32,7 +32,7 @@ if python_path := os.getenv('PYTHONPATH'):
     )
 
 if not project_in_path:
-    set_key(env, 'PYTHONPATH', project_root.as_posix(), quote_mode='auto')
+    set_key(env, 'PYTHONPATH', project_root.as_posix(), quote_mode='auto', export=True)
     load_dotenv(env)
 
 
