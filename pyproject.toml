@@ -1,0 +1,29 @@
+[project]
+name = "ConfigReader"
+description = "Simple Yaml config reader"
+version = "0.0.0"
+
+requires-python = ">= 3.10"
+classifiers = [
+    "Development Status :: 0 - Pre Alpha",
+    "Programming Language :: Python"
+]
+
+dependencies = [
+    "pyyaml",
+    "jmespath"
+]
+
+
+[build-system]
+requires = [
+    "setuptools @ git+https://github.com/pypa/setuptools",
+    "cython >= 0.29.33",
+    "wheel >= 0.40"
+]
+build-backend = "setuptools.build_meta"
+
+#[tool.setuptools.package-data]
+#vehicle_photo_service = [
+#    "*.h5", "*.txt"
+#]
