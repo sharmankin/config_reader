@@ -19,7 +19,7 @@ dependencies = [
 [tool.setuptools]
 packages = [
     "config_reader",
-    "project_config"
+#    "project_config"
 ]
 
 
