@@ -18,11 +18,11 @@ dependencies = [
 [tool.setuptools]
 packages = [
     "config_reader",
-    "project_config"
+#    "project_config"
 ]
 
 [tool.setuptools.package-data]
-    project_config = [
+    project_config.varmin = [
         "*.txt"
     ]
     config_reader = [
