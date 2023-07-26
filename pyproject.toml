@@ -21,6 +21,13 @@ packages = [
     "project_config"
 ]
 
+[tool.setuptools.package-data]
+    project_config = [
+        "*.txt"
+    ]
+    config_reader = [
+        "*.dst"
+    ]
 
 [build-system]
 requires = [
