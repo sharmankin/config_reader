@@ -1,21 +1,28 @@
-import inspect
 import os
 from pathlib import Path
 
-project_root = Path(os.path.commonpath((inspect.stack()[0].filename, inspect.stack()[1].filename)))
+from dotenv import load_dotenv, find_dotenv
+
+env = Path(find_dotenv('project.env'))
+
+assert load_dotenv(env), 'No project.env found'
+
+project_root = Path(
+    env.parent
+)
 
 
 def get_config(node_path: str, *, conf_string_delimiter: str = None, **kwargs):
     import jmespath as jp
     import yaml
 
-    project_name = kwargs.get('project_name', project_root.name.lower())
+    config_file_relative_path = Path(
+        os.getenv('CONFIG_PATH')
+    )
 
-    config_file = project_root.home() / f'.config/{project_name}/config.yaml'
+    config_file = project_root.home() / config_file_relative_path
 
-    assert config_file.exists(), 'No config file'
-
-    i = inspect.stack()
+    assert config_file.exists(), f'No config file {config_file.absolute().as_posix()}'
 
     if isinstance(config := jp.search(
             node_path,

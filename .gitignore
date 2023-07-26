@@ -106,3 +106,5 @@ dmypy.json
 .pytype/
 cython_debug/
 *.ipynb
+/ctt.py
+*.env

@@ -1,7 +1,7 @@
 [project]
 name = "ConfigReader"
 description = "Simple Yaml config reader"
-version = "0.0.2"
+version = "0.0.4"
 
 requires-python = ">= 3.10"
 classifiers = [
@@ -11,7 +11,8 @@ classifiers = [
 
 dependencies = [
     "pyyaml",
-    "jmespath"
+    "jmespath",
+    "python-dotenv"
 ]
 
 
