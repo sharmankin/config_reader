@@ -1,5 +1,5 @@
 [project]
-name = "ConfigReader"
+name = "config_reader"
 description = "Simple Yaml config reader"
 version = "0.0.4"
 
