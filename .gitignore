@@ -105,3 +105,4 @@ dmypy.json
 .pyre/
 .pytype/
 cython_debug/
+*.ipynb

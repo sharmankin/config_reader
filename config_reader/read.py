@@ -1,11 +1,21 @@
+import inspect
+import os
+from pathlib import Path
+
+project_root = Path(os.path.commonpath((inspect.stack()[0].filename, inspect.stack()[1].filename)))
+
+
 def get_config(node_path: str, *, conf_string_delimiter: str = None, **kwargs):
     import jmespath as jp
     import yaml
-    from pathlib import Path
 
-    config_file = Path().home() / '.config/smai/config.yaml'
+    project_name = kwargs.get('project_name', project_root.name.lower())
+
+    config_file = project_root.home() / f'.config/{project_name}/config.yaml'
 
     assert config_file.exists(), 'No config file'
+
+    i = inspect.stack()
 
     if isinstance(config := jp.search(
             node_path,
