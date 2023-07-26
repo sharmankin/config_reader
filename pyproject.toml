@@ -22,8 +22,8 @@ packages = [
 ]
 
 [tool.setuptools.package-data]
-    project_config.varmin = [
-        "*.txt"
+    project_config = [
+         "*.txt"
     ]
     config_reader = [
         "*.dst"
