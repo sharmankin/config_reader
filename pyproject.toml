@@ -1,7 +1,7 @@
 [project]
 name = "config_reader"
 description = "Simple Yaml config reader"
-version = "0.0.7"
+version = "0.0.8"
 
 requires-python = ">= 3.10"
 classifiers = [
@@ -19,7 +19,7 @@ dependencies = [
 [tool.setuptools]
 packages = [
     "config_reader",
-#    "project_config"
+    "project_config"
 ]
 
 
