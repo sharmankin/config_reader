@@ -14,7 +14,7 @@ project_root = Path(
 )
 
 
-def get_config(node_path: str, *, conf_string_delimiter: str = None, **kwargs):
+def get_config(node_path: str, *, conf_string_delimiter: str = None, strict: bool = True, **kwargs):
     import jmespath as jp
     import yaml
 
@@ -37,6 +37,8 @@ def get_config(node_path: str, *, conf_string_delimiter: str = None, **kwargs):
             )
     ), dict):
         config = config | kwargs
+    elif config is None and not strict:
+        return
 
     assert config, f'No config found for {node_path}'
 
