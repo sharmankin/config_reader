@@ -1,16 +1,27 @@
 import os
 import platform
 import stat
+import sys
 from pathlib import Path
 
 from dotenv import load_dotenv, find_dotenv
 
-env = Path(find_dotenv('project.env'))
+lib_env_file = Path(__file__).parent / 'lib.env'
 
-assert load_dotenv(env), 'No project.env found'
+if not lib_env_file.exists():
+    print(
+        'Project configuration is not adjusted',
+        'Please use `project init` command in console to setup project configuration',
+        sep='\n'
+    )
+    sys.exit(1)
+
+# env = Path(find_dotenv('project.env'))
+
+assert load_dotenv(lib_env_file), 'No project.env found'
 
 project_root = Path(
-    env.parent
+    os.getenv('PROJECT_ROOT')
 )
 
 
@@ -22,7 +33,7 @@ def get_config(node_path: str, *, conf_string_delimiter: str = None, strict: boo
         os.getenv('CONFIG_PATH')
     )
 
-    config_file = project_root.home() / config_file_relative_path
+    config_file = config_file_relative_path
 
     assert (
                not os.stat(config_file).st_mode & (stat.S_IWOTH | stat.S_IWGRP | stat.S_IRGRP | stat.S_IROTH)

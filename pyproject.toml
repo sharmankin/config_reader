@@ -1,7 +1,7 @@
 [project]
 name = "config_reader"
 description = "Simple Yaml config reader"
-version = "0.1.0"
+version = "0.1.1"
 
 requires-python = ">= 3.10"
 classifiers = [
@@ -30,6 +30,9 @@ requires = [
     "wheel >= 0.40"
 ]
 build-backend = "setuptools.build_meta"
+
+[project.scripts]
+    init = 'project_config.setup:main'
 
 #[tool.setuptools.package-data]
 #package_name = [
