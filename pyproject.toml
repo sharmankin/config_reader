@@ -32,7 +32,7 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [project.scripts]
-    init = 'project_config.setup:main'
+init = 'project_config.setup:main'
 
 #[tool.setuptools.package-data]
 #package_name = [
