@@ -1,4 +1,5 @@
 import argparse
+import os
 from pathlib import Path
 
 import dotenv
@@ -49,6 +50,18 @@ def main():
             'CONFIG_PATH',
             args.config.as_posix(),
             export=True
+        )
+
+        dotenv.set_key(
+            lib_conf,
+            'PYTHONPATH',
+            args.project_root.as_posix()
+        )
+
+        dotenv.set_key(
+            lib_conf,
+            'VIRTUAL_ENV',
+            os.getenv('VIRTUAL_ENV')
         )
 
         Path(args.project_root / 'project.env').symlink_to(
