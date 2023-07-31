@@ -4,7 +4,7 @@ import stat
 import sys
 from pathlib import Path
 
-from dotenv import load_dotenv, find_dotenv
+from dotenv import load_dotenv
 
 lib_env_file = Path(__file__).parent / 'lib.env'
 

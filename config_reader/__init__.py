@@ -1,1 +1,1 @@
-from .read import get_config, project_root, env
+from .read import get_config, project_root
