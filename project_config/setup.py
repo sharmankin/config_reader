@@ -1,16 +1,20 @@
 import argparse
 import os
 from pathlib import Path
+from typing import Optional
 
 import dotenv
 
 
-def main():
+def main(parent_parser: Optional[argparse.ArgumentParser] = None):
     lib_conf = Path(__file__).parent.parent / 'config_reader/lib.env'
 
     default_root = Path('.').absolute()
 
-    ap = argparse.ArgumentParser(prog='Config Reader')
+    ap = argparse.ArgumentParser(
+        prog='Config Reader',
+        parents=list(filter(bool, [parent_parser]))
+    )
 
     ap.add_argument(
         '--project-root', '-r',
