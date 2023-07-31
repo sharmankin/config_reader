@@ -34,6 +34,14 @@ def main():
         help='Rebuild configuration'
     )
 
+    ap.add_argument(
+        '--env', '-e',
+        action='append',
+        type=str,
+        help='Set additional variables for dotevn as -e "KEY=VALUE"',
+        metavar=''
+    )
+
     args = ap.parse_args()
 
     pc: Path
@@ -63,6 +71,14 @@ def main():
             'VIRTUAL_ENV',
             os.getenv('VIRTUAL_ENV')
         )
+
+        for item in args.env:
+            key, value = item.split('=')
+            dotenv.set_key(
+                lib_conf,
+                key,
+                value
+            )
 
         Path(args.project_root / 'project.env').symlink_to(
             lib_conf
